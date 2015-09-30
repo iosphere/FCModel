@@ -1028,7 +1028,7 @@ static inline BOOL checkForOpenDatabaseFatal(BOOL fatal)
     checkForOpenDatabaseFatal(YES);
 
     NSThread *sourceThread = NSThread.currentThread;
-    __block FCModelSaveResult result;
+    __block FCModelSaveResult result = FCModelSaveFailed;
     __block NSSet *changedFields;
     [g_databaseQueue writeDatabase:^(FMDatabase *db) {
         if (deleted) { result = FCModelSaveNoChanges; return; }
